@@ -1,10 +1,10 @@
 import os
 
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 from dotenv import load_dotenv
 
-
+load_dotenv()
 
 class ProjectConfig(BaseSettings):
 	datetime_format:str = "%Y-%m-%dT%H:%M:%S"
@@ -15,7 +15,7 @@ class ProjectConfig(BaseSettings):
 
 	for cfg in [project_name, project_path]:
 		if cfg is None:
-			raise Exception('Parsing db config error')
+			raise Exception('Parsing project config error')
 
 
 class ServerConfig(BaseSettings):
@@ -55,9 +55,10 @@ class LoggerConfig(BaseSettings):
 	
 
 class Configs(BaseSettings):
-	load_dotenv()
-	
 	projectcfg = ProjectConfig()
 	servercfg = ServerConfig()
 	dbcfg = DBConfig()
 	logcfg = LoggerConfig()
+
+
+configs = Configs()

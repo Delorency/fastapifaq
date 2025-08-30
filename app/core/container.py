@@ -1,7 +1,7 @@
 from dependency_injector import containers, providers
 
 from .database import Database
-from .config import Configs
+from .config import configs
 
 
 class Container(containers.DeclarativeContainer):
@@ -10,5 +10,4 @@ class Container(containers.DeclarativeContainer):
         ]
     )
 
-    cfg = providers.Singleton(Configs)
-    db = providers.Singleton(Database, db_uri=cfg.dbcfg.database_uri)
+    db = providers.Singleton(Database, db_uri=configs.dbcfg.database_uri)
