@@ -6,6 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .base import BaseModel
 
 
+
 class Question(BaseModel):
     __tablename__= "question"
     text: Mapped[str] = mapped_column(Text)

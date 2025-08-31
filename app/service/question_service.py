@@ -1,5 +1,5 @@
-from app.repo.base_repo import BaseRepo
-from .base_service import BaseService
+from app.repo.base import BaseRepo
+from .base import BaseService
 
 
 

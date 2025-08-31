@@ -4,6 +4,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .base import BaseModel
 
 
+
 class Answer(BaseModel):
     __tablename__= "answer"
     text: Mapped[str] = mapped_column(Text)

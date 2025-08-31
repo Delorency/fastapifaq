@@ -20,7 +20,7 @@ class ProjectConfig(BaseSettings):
 
 class ServerConfig(BaseSettings):
 	host:str = os.getenv('HOST', 'localhost')
-	port:str = os.getenv('PORT', '8080')
+	port:int = os.getenv('PORT', 8080)
 
 
 class DBConfig(BaseSettings):

@@ -1,4 +1,4 @@
-from app.repo.base_repo import BaseRepo
+from app.repo.base import BaseRepo
 
 
 

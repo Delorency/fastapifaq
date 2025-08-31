@@ -1,6 +1,5 @@
-from .base_repo import BaseRepo
-
-from app.model.question import Question
+from app.model import Question
+from .base import BaseRepo
 
 
 class QuestionRepo(BaseRepo):

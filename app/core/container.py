@@ -12,11 +12,11 @@ class Container(containers.DeclarativeContainer):
         ]
     )
     # base
-    db = providers.Singleton(Database, db_uri=configs.dbcfg.database_uri)
+    database = providers.Singleton(Database, db_uri=configs.dbcfg.database_uri)
 
     # repo
-    question_repo = providers.Factory(QuestionRepo, session=db.provided.session)
-    answer_repo = providers.Factory(AnswerRepo, session=db.provided.session)
+    question_repo = providers.Factory(QuestionRepo, session=database.provided.session)
+    answer_repo = providers.Factory(AnswerRepo, session=database.provided.session)
 
     # service
     question_service = providers.Factory(QuestionService, repo=question_repo)
