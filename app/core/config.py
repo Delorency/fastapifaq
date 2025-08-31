@@ -12,7 +12,7 @@ class ProjectConfig(BaseSettings):
 
 	project_name:str = os.getenv('PROJECT_NAME', 'faq project')
 	project_path:str = os.getenv('PROJECT_PATH')
-
+	cfg:str
 	for cfg in [project_name, project_path]:
 		if cfg is None:
 			raise Exception('Parsing project config error')
