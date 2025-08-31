@@ -11,4 +11,4 @@ class Question(BaseModel):
     __tablename__= "question"
     text: Mapped[str] = mapped_column(Text)
 
-    answers: Mapped[List["Answer"]] = relationship(back_populates="answers")
+    answers: Mapped[List["Answer"]] = relationship(back_populates="question")

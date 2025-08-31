@@ -9,6 +9,8 @@ from app.service import *
 class Container(containers.DeclarativeContainer):
     wiring_config = containers.WiringConfiguration(
         modules=[
+            "app.api.v1.endpoints.question",
+            "app.api.v1.endpoints.answer",
         ]
     )
     # base

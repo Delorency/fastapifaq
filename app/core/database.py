@@ -1,5 +1,5 @@
 from typing import Callable
-from contextlib import AbstractContextManager, contextmanager
+from contextlib import contextmanager, AbstractContextManager
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session, Session
@@ -12,7 +12,7 @@ class Database:
         self._scoped_session = scoped_session(self._session_factory)
 
     @contextmanager 
-    def session(self):
+    def session(self) -> Callable[..., AbstractContextManager[Session]]:
         session: Session = self._scoped_session()
         try:
             yield session
