@@ -29,13 +29,13 @@ class DBConfig(BaseSettings):
 	db_name:str = os.getenv('DB_NAME')
 	db_user:str = os.getenv('DB_USER')
 	db_pass:str = os.getenv('DB_PASS')
-	
+	cfg:str
 	for cfg in [db_host, db_port, db_name, db_user, db_pass]:
 		if cfg is None:
 			raise Exception('Parsing db config error')
 
 	database_uri_format:str = "postgresql://{user}:{password}@{host}:{port}/{name}"
-	database_uri = database_uri_format.format(
+	database_uri:str = database_uri_format.format(
 		user=db_user,
 		password=db_pass,
 		host=db_host,
@@ -48,17 +48,17 @@ class LoggerConfig(BaseSettings):
 	logsdir:str = os.getenv('LOGSDIR')
 	apilogfilename:str = os.getenv('APILOGFILENAME')
 	dblogfilename:str = os.getenv('DBLOGFILENAME')
-
+	cfg:str
 	for cfg in [logsdir, apilogfilename, dblogfilename]:
 		if cfg is None:
 			raise Exception('Parsing logger config error')
 	
 
 class Configs(BaseSettings):
-	projectcfg = ProjectConfig()
-	servercfg = ServerConfig()
-	dbcfg = DBConfig()
-	logcfg = LoggerConfig()
+	projectcfg:ProjectConfig = ProjectConfig()
+	servercfg:ServerConfig = ServerConfig()
+	dbcfg:DBConfig = DBConfig()
+	logcfg:LoggerConfig = LoggerConfig()
 
 
 configs = Configs()

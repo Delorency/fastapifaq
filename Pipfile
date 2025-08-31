@@ -12,6 +12,7 @@ pydantic = "*"
 dependency-injector = "*"
 dotenv = "*"
 pydantic-settings = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
