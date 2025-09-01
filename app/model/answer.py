@@ -1,10 +1,10 @@
 from sqlalchemy import Text, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from .base import BaseModel
+from .base import Base
 
 
-class Answer(BaseModel):
+class Answer(Base):
     __tablename__= "answer"
     text: Mapped[str] = mapped_column(Text)
     
