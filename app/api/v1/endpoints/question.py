@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from dependency_injector.wiring import Provide, inject
 
 from app.core import Container
-from app.schema import *
+from app.schema import GetQuestionsResponse, QuestionSchema, CreateQuestionRequest, GetQuestionResponse, Pagination
 
 
 router = APIRouter(prefix='/question', tags=['Questions'])
@@ -15,7 +15,7 @@ async def get_questions(pag = Depends(Pagination), service=Depends(Provide[Conta
     return service.get_list(pag)
 
 
-@router.post("/", summary='Create question', response_model=CreateQuestionResponse, status_code=201)
+@router.post("/", summary='Create question', response_model=QuestionSchema, status_code=201)
 @inject
 async def create_question(schema:CreateQuestionRequest, service=Depends(Provide[Container.question_service])):
     return service.create(schema)

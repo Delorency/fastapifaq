@@ -11,4 +11,8 @@ class Question(Base):
     __tablename__= "question"
     text: Mapped[str] = mapped_column(Text)
 
-    answers: Mapped[List["Answer"]] = relationship(back_populates="question", cascade="all")
+    answers: Mapped[List["Answer"]] = relationship(
+        back_populates="question",
+        cascade="all",
+        order_by="desc(Answer.created_at)"
+    )

@@ -1,3 +1,4 @@
 from .pagination import Pagination
-from .question_schema import GetQuestionsResponse, CreateQuestionRequest, GetQuestionResponse, CreateQuestionResponse
-from .answer_schema import GetAnswerRequest
+
+from .question_schema import *
+from .answer_schema import *
