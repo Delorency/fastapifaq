@@ -4,16 +4,13 @@ from pydantic_settings import BaseSettings
 
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 class ProjectConfig(BaseSettings):
-	datetime_format:str = "%Y-%m-%dT%H:%M:%S"
-	date_format:str = "%Y-%m-%d"
-
 	project_name:str = os.getenv('PROJECT_NAME', 'faq project')
-	project_path:str = os.getenv('PROJECT_PATH')
 	cfg:str
-	for cfg in [project_name, project_path]:
+	for cfg in [project_name]:
 		if cfg is None:
 			raise Exception('Parsing project config error')
 
@@ -46,16 +43,6 @@ class DBConfig(BaseSettings):
 class APIConfig(BaseSettings):
 	page:int = os.getenv('PAGE', 1)
 	limit:int = os.getenv('LIMIT', 10)
-
-
-class LoggerConfig(BaseSettings):
-	logsdir:str = os.getenv('LOGSDIR')
-	apilogfilename:str = os.getenv('APILOGFILENAME')
-	dblogfilename:str = os.getenv('DBLOGFILENAME')
-	cfg:str
-	for cfg in [logsdir, apilogfilename, dblogfilename]:
-		if cfg is None:
-			raise Exception('Parsing logger config error')
 	
 
 class Configs(BaseSettings):
@@ -63,7 +50,6 @@ class Configs(BaseSettings):
 	servercfg:ServerConfig = ServerConfig()
 	dbcfg:DBConfig = DBConfig()
 	apicfg:APIConfig = APIConfig()
-	logcfg:LoggerConfig = LoggerConfig()
 
 
 configs = Configs()
