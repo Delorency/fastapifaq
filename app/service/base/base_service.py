@@ -14,6 +14,9 @@ class BaseService:
     def get_list(self, pag:Pagination) -> List[Base]:
         return self._repo._get_list(pag)
     
+    def get_by_id(self, id:int) -> Base:
+        return self._repo._get_by_id(id)
+    
     def create(self, schema:BaseModel) -> Base:
         return self._repo._create(schema)
     

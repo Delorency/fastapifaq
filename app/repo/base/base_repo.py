@@ -22,6 +22,16 @@ class BaseRepo:
             
             return objs
         
+    def _get_by_id(self, id:int) -> Base:
+        with self._session() as session:
+            obj = session.query(self._model).filter(self._model.id==id).first()
+
+            if obj is None:
+                raise NotFoundError(f'Not found with id={id}')
+            
+            return obj
+
+        
     def _create(self, schema:BaseModel) -> Base:
         with self._session() as session:
             query = self._model(**schema.model_dump(exclude_none=True))

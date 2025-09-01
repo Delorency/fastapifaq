@@ -12,7 +12,7 @@ class QuestionRepo(BaseRepo):
     def __init__(self, session:Callable[...,AbstractContextManager[Session]]) -> None:
         super().__init__(Question, session)
 
-    def _get_by_id(self, id:int) -> List[Question]:
+    def _get_question_by_id(self, id:int) -> List[Question]:
         with self._session() as session:
             obj = session.query(self._model).options(
                 selectinload(self._model.answers)).filter(self._model.id==id).first()

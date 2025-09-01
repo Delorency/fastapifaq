@@ -24,7 +24,7 @@ async def create_question(schema:CreateQuestionRequest, service=Depends(Provide[
 @router.get("/{id}", summary="Get question by id", response_model=GetQuestionResponse, status_code=200)
 @inject
 async def get_question(id:int, service=Depends(Provide[Container.question_service])):
-    return service.get_by_id(id)
+    return service.get_question_by_id(id)
 
 
 @router.delete("/{id}", summary="Delete question by id", status_code=204)
