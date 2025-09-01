@@ -30,7 +30,6 @@ class BaseRepo:
                 raise NotFoundError(f'Not found with id={id}')
             
             return obj
-
         
     def _create(self, schema:BaseModel) -> Base:
         with self._session() as session:
