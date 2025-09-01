@@ -11,4 +11,4 @@ class Question(Base):
     __tablename__= "question"
     text: Mapped[str] = mapped_column(Text)
 
-    answers: Mapped[List["Answer"]] = relationship(back_populates="question")
+    answers: Mapped[List["Answer"]] = relationship(back_populates="question", cascade="all")

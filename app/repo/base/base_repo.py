@@ -16,7 +16,6 @@ class BaseRepo:
         self._session = session
         self._model = model
 
-
     def _get_list(self, pag:Pagination) -> List[Base]:
         with self._session() as session:
             objs = session.query(self._model).order_by(desc(self._model.created_at)).offset((pag.page-1)*pag.limit).limit(pag.limit).all()

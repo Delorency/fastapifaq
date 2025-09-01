@@ -1,7 +1,10 @@
+from typing import List
+
 from datetime import datetime
 from pydantic import BaseModel, RootModel, field_validator
 
 from app.core.exceptions import BadRequestError
+from .answer_schema import AnswerSchema
 
 
 class QuestionSchema(BaseModel):
@@ -12,6 +15,7 @@ class QuestionSchema(BaseModel):
 class GetQuestionsResponse(RootModel):
     root:list[QuestionSchema]
 
+
 class CreateQuestionRequest(BaseModel):
     text:str
 
@@ -21,3 +25,10 @@ class CreateQuestionRequest(BaseModel):
         if len(value) < 10:
             raise BadRequestError("The text must be at least 10 characters long")
         return value
+    
+
+class GetQuestionResponse(BaseModel):
+    id:int
+    text:str
+    answers:List[AnswerSchema]
+    created_at:datetime
