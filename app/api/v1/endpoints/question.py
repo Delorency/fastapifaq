@@ -15,7 +15,7 @@ async def get_questions(pag = Depends(Pagination), service=Depends(Provide[Conta
     return service.get_list(pag)
 
 
-@router.post("/", summary='Create question', status_code=201)
+@router.post("/", summary='Create question', response_model=CreateQuestionResponse, status_code=201)
 @inject
 async def create_question(schema:CreateQuestionRequest, service=Depends(Provide[Container.question_service])):
     return service.create(schema)

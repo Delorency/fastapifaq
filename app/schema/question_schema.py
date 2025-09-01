@@ -26,6 +26,12 @@ class CreateQuestionRequest(BaseModel):
             raise BadRequestError("The text must be at least 10 characters long")
         return value
     
+    
+class CreateQuestionResponse(BaseModel):
+    id:int
+    text:str
+    created_at:datetime
+
 
 class GetQuestionResponse(BaseModel):
     id:int

@@ -22,7 +22,7 @@ class BaseRepo:
             
             return objs
         
-    def _create(self, schema:BaseModel) -> None:
+    def _create(self, schema:BaseModel) -> Base:
         with self._session() as session:
             query = self._model(**schema.model_dump(exclude_none=True))
             try:
@@ -31,6 +31,8 @@ class BaseRepo:
                 session.refresh(query)
             except IntegrityError as e:
                 raise DuplicatedError(str(e.orig))
+            
+            return query
             
     def _delete(self, id:int) -> None:
         with self._session() as session:

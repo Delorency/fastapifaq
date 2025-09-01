@@ -14,7 +14,7 @@ class BaseService:
     def get_list(self, pag:Pagination) -> List[Base]:
         return self._repo._get_list(pag)
     
-    def create(self, schema:BaseModel):
+    def create(self, schema:BaseModel) -> Base:
         return self._repo._create(schema)
     
     def delete(self, id:int):
