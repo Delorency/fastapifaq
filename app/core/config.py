@@ -43,6 +43,10 @@ class DBConfig(BaseSettings):
 		name=db_name,
 	)
 
+class APIConfig(BaseSettings):
+	page:int = os.getenv('PAGE', 1)
+	limit:int = os.getenv('LIMIT', 10)
+
 
 class LoggerConfig(BaseSettings):
 	logsdir:str = os.getenv('LOGSDIR')
@@ -58,6 +62,7 @@ class Configs(BaseSettings):
 	projectcfg:ProjectConfig = ProjectConfig()
 	servercfg:ServerConfig = ServerConfig()
 	dbcfg:DBConfig = DBConfig()
+	apicfg:APIConfig = APIConfig()
 	logcfg:LoggerConfig = LoggerConfig()
 
 

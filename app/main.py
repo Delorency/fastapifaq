@@ -1,7 +1,8 @@
 from fastapi import FastAPI 
 from starlette.middleware.cors import CORSMiddleware
 
-from app.core import Container, configs
+from app.core import Container
+from app.core.config import configs
 from app.api import v1_router
 
 
