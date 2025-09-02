@@ -18,7 +18,7 @@ class Container(containers.DeclarativeContainer):
 
     # repo
     question_repo = providers.Factory(QuestionRepo, session=database.provided.session)
-    answer_repo = providers.Factory(AnswerRepo, session=database.provided.session)
+    answer_repo = providers.Factory(AnswerRepo, question_repo, session=database.provided.session)
 
     # service
     question_service = providers.Factory(QuestionService, repo=question_repo)

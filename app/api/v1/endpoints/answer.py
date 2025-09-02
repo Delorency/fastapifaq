@@ -19,7 +19,7 @@ def get_answer(id:int, service = Depends(Provide[Container.answer_service])):
 @inject 
 def get_answer(id:int, schema:CreateAnswerRequest, service = Depends(Provide[Container.answer_service])):
     schema.question_id = id
-    return service.create(schema)
+    return service.create_answer(schema)
 
 
 @router.delete("/answer/{id}", summary="Delete answer by id", status_code=204)
